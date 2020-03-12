@@ -8,15 +8,12 @@ using FSISSystem.ENTITIES;
 
 namespace FSISSystem.DAL
 {
-    class FSISContext : DbContext
+    internal class FSISContext : DbContext
     {
         public FSISContext() : base("FSIS_db")
         {
 
         }
-
-        public DbSet<Guardian> Guardian { get; set; }
-        public DbSet<Player> Player { get; set; }
-        public DbSet<Team> Team { get; set; }
+        public DbSet<Team> Teams { get; set; }
     }
 }
