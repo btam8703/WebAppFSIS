@@ -8,7 +8,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FSISSystem.ENTITIES
 {
-    class Team
+
+    [Table("Team")]
+    public class Team
     {
+        public int TeamID { get; set; }
+        public string TeamName { get; set; }
+
     }
 }

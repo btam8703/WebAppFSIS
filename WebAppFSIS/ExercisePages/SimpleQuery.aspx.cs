@@ -13,5 +13,46 @@ namespace WebAppFSIS.ExercisePages
         {
 
         }
+
+        protected void Fetch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(RegionIDArg.Text))
+            {
+                MessageLabel.Text = "Enter a region id value.";
+            }
+            else
+            {
+                int regionid = 0;
+                if (int.TryParse(RegionIDArg.Text, out regionid))
+                {
+                    if (regionid > 0)
+                    {
+                        RegionController sysmgr = new RegionController();
+                        Region info = null;
+                        info = sysmgr.Regions_FindByID(regionid); //BLL controller method
+                        if (info == null)
+                        {
+                            MessageLabel.Text = "Region ID not found.";
+                            RegionID.Text = "";
+                            RegionDescription.Text = "";
+                        }
+                        else
+                        {
+                            RegionID.Text = info.RegionID.ToString();
+                            RegionDescription.Text = info.RegionDescription;
+                        }
+                    }
+                    else
+                    {
+                        MessageLabel.Text = "Region id must be greater than 0";
+                    }
+
+                }
+                else
+                {
+                    MessageLabel.Text = "Region id must be a number.";
+                }
+            }
+        }
     }
 }
